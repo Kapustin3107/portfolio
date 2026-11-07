@@ -1,0 +1,9 @@
+.layout {
+  &__main {
+    flex: 1;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

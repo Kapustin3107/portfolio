@@ -1,15 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Frontend developer portfolio and tech blog: React, SCSS, GSAP, accessibility." />
-    <meta name="theme-color" content="#0d1117" />
-    <title>Portfolio — Frontend Developer</title>
+    <title>Yurii Kapustin — Frontend Markup Developer</title>
+    <meta
+      name="description"
+      content="Yurii Kapustin — Frontend Markup Lead (Valencia, Spain). 5+ years of commercial experience in HTML/CSS markup, design systems, accessibility (a11y) and Core Web Vitals optimization."
+    />
+    <meta name="theme-color" content="#0a0f1d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <script>
+      // Apply the saved / preferred theme before first paint to avoid a flash.
+      ;(function () {
+        try {
+          var saved = localStorage.getItem('theme')
+          var theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+          document.documentElement.dataset.theme = theme
+          if (theme === 'light') document.querySelector('meta[name="theme-color"]').content = '#f8fafc'
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
-    <noscript>This site requires JavaScript to run.</noscript>
+    <noscript>This site requires JavaScript.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

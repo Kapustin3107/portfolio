@@ -1,0 +1,54 @@
+@use '@/assets/styles' as *;
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: space('6');
+  margin-bottom: space('12');
+
+  &--split {
+    @include mq(md) {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: space('2');
+
+    .section-header--center & {
+      align-items: center;
+      gap: space('4');
+    }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+  }
+
+  &__title {
+    @include heading('3xl');
+  }
+
+  &__description {
+    max-width: 28rem;
+    @include font-size('sm');
+    color: var(--color-text-muted);
+
+    .section-header--center & {
+      max-width: 32rem;
+
+      @include mq(sm) {
+        @include font-size('base');
+      }
+    }
+  }
+}

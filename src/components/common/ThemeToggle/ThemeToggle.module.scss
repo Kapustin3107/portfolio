@@ -1,0 +1,25 @@
+@use '@/assets/styles' as *;
+
+.theme-toggle {
+  @include flex-center;
+  padding: 0.625rem;
+  color: var(--color-text-secondary);
+  background-color: color-mix(in srgb, var(--color-surface-muted) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 60%, transparent);
+  border-radius: var(--radius-lg);
+  @include transition(color, border-color);
+
+  @include hover {
+    color: var(--color-primary);
+    border-color: tint(primary-solid, 50%);
+  }
+
+  &__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+
+    &--sun {
+      color: var(--color-amber);
+    }
+  }
+}

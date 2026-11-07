@@ -1,0 +1,59 @@
+@use '@/assets/styles' as *;
+
+.project-modal {
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: space('2');
+    padding-right: space('10');
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+  }
+
+  &__title {
+    @include font-size('2xl');
+    font-weight: 700;
+    color: var(--color-text-strong);
+  }
+
+  &__description {
+    @include font-size('sm');
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: space('2');
+    padding: space('4');
+    font-family: var(--font-family-mono);
+    @include font-size('xs');
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  &__highlights-title {
+    color: var(--color-text-muted);
+  }
+
+  &__highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: space('1');
+    padding-left: space('4');
+    color: var(--color-primary);
+    list-style: disc;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('4');
+    justify-content: flex-end;
+    padding-top: space('2');
+  }
+}

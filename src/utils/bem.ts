@@ -13,16 +13,20 @@
  *   b('title', { featured: isFeatured }) // .portfolio-card__title [.portfolio-card__title--featured]
  *   b('title', 'large')                  // .portfolio-card__title .portfolio-card__title--large
  *
- * In dev, a missing class logs a warning (usually a typo in TSX or SCSS).
+ * In dev, a class missing from the module is logged once via console.debug (often a typo).
  */
 
 type Styles = Readonly<Record<string, string>>
 type Modifiers = string | ReadonlyArray<string | false | null | undefined> | Record<string, unknown>
 
+// Each missing class is reported once, not on every render.
+const reported = new Set<string>()
+
 function resolve(styles: Styles, name: string): string | undefined {
   const value = styles[name]
-  if (value === undefined && import.meta.env.DEV) {
-    console.warn(`[bem] Class "${name}" is not defined in the CSS module.`)
+  if (value === undefined && import.meta.env.DEV && !reported.has(name)) {
+    reported.add(name)
+    console.debug(`[bem] "${name}" has no styles in its CSS module (fine if intentional, check for typos).`)
   }
   return value
 }

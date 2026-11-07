@@ -1,0 +1,140 @@
+@use '@/assets/styles' as *;
+
+// Hover (pointer devices only) and keyboard focus share the same highlight.
+@mixin highlight {
+  @include hover {
+    @content;
+  }
+
+  &:focus-visible {
+    @content;
+  }
+}
+
+.navigation {
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    -webkit-tap-highlight-color: transparent;
+    @include transition(color, background-color, opacity, transform);
+
+    &:focus-visible {
+      outline: $focus-ring-width solid var(--color-focus);
+      outline-offset: $focus-ring-offset;
+    }
+
+    // Pressed state
+    &:active {
+      opacity: 0.75;
+    }
+  }
+
+  // ---- Desktop: inline row with animated underline ---------------------------
+
+  &--desktop &__list {
+    gap: space('6');
+    align-items: center;
+
+    @include mq(xl) {
+      gap: space('8');
+    }
+  }
+
+  &--desktop &__link {
+    position: relative;
+    padding-block: space('1');
+    @include font-size('sm');
+    color: var(--color-text-secondary);
+
+    &::after {
+      position: absolute;
+      inset: auto 0 -0.25rem;
+      height: 2px;
+      content: '';
+      background-color: var(--color-primary);
+      border-radius: var(--radius-full);
+      transform: scaleX(0);
+      transform-origin: left center;
+      @include transition(transform, opacity);
+    }
+
+    @include highlight {
+      color: var(--color-primary);
+
+      &::after {
+        opacity: 0.5;
+        transform: scaleX(1);
+      }
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  // Current section (aria-current)
+  &--desktop &__link--active {
+    color: var(--color-primary);
+
+    &::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    @include highlight {
+      color: var(--color-primary-hover);
+
+      &::after {
+        opacity: 1;
+        background-color: var(--color-primary-hover);
+      }
+    }
+  }
+
+  // ---- Mobile: stacked list with highlighted rows ----------------------------
+
+  &--mobile &__list {
+    flex-direction: column;
+    gap: space('1');
+  }
+
+  &--mobile &__link {
+    position: relative;
+    margin-inline: calc(-1 * #{space('3')});
+    padding: space('3');
+    @include font-size('lg');
+    color: var(--color-text);
+    border-radius: var(--radius-lg);
+
+    @include highlight {
+      color: var(--color-primary);
+      background-color: tint(primary-solid, 8%);
+    }
+
+    // Touch devices have no hover — give feedback on tap instead.
+    &:active {
+      opacity: 1;
+      background-color: tint(primary-solid, 14%);
+    }
+  }
+
+  // Current section: accent color + left indicator bar
+  &--mobile &__link--active {
+    color: var(--color-primary);
+    background-color: tint(primary-solid, 10%);
+
+    &::before {
+      position: absolute;
+      inset: space('3') auto space('3') 0;
+      width: 3px;
+      content: '';
+      background-color: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+  }
+}

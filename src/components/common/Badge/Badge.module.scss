@@ -1,0 +1,41 @@
+@use '@/assets/styles' as *;
+
+.badge {
+  display: inline-flex;
+  gap: 0.625rem;
+  align-items: center;
+  padding: space('2') space('4');
+  font-family: var(--font-family-mono);
+  @include font-size('xs');
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: tint(primary-solid, 10%);
+  border: 1px solid tint(primary-solid, 30%);
+  border-radius: var(--radius-full);
+
+  &__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-full);
+
+    @include motion-safe {
+      animation: badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+
+    svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+  }
+}
+
+@keyframes badge-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

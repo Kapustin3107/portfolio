@@ -43,15 +43,20 @@ const b = bem(styles, 'portfolio-card')
 
 ```text
 src/
-├── assets/styles/      # _variables, _mixins, _index (forward), global.scss
+├── assets/styles/          # _variables (tokens, themes), _mixins, _index, global.scss
 ├── components/
-│   ├── common/         # Header, Footer, Navigation, Button
-│   ├── animated/       # ScrollReveal, ParallaxCard
-│   └── sections/       # Hero, ProjectList, BlogList
-├── content/            # Markdown content (blog, portfolio)
-├── hooks/              # useMotionAnimation, useReducedMotion
-├── lib/                # gsap setup
-├── pages/              # Home, Portfolio, Blog, BlogPost
-├── services/           # content loaders
-└── utils/              # bem helper
+│   ├── common/             # Layout, Header, Footer, Navigation, Logo, ThemeToggle, Button,
+│   │                       # Badge, Tag, SectionHeader, Modal, Toast, SkipLink, SocialIcon, ScrollToHash
+│   ├── cards/              # ProjectCard, BlogCard
+│   ├── animated/           # ScrollReveal, ScrollProgress
+│   └── sections/           # Hero (+CodeWindow), ProjectList (+ProjectModal), BlogList, Contact (+ContactForm)
+├── content/                # site.ts (profile, nav, contacts), blog/*.json, portfolio/*.json
+├── hooks/                  # useMotionAnimation, useReducedMotion, useTheme, useActiveSection
+├── lib/                    # gsap setup
+├── pages/                  # Home, NotFound
+├── services/               # content.ts — typed content access
+└── utils/                  # bem, format
 ```
+
+Each component lives in its own folder: `Component.tsx`, `Component.module.scss`, `index.ts`.
+Personal data (name, contacts, CV link) is edited in `src/content/site.ts`.

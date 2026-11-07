@@ -1,0 +1,131 @@
+@use 'sass:map';
+@use '@/assets/styles' as *;
+
+.hero {
+  position: relative;
+  padding-block: space('12') space('24');
+  overflow: hidden;
+
+  @include mq(lg) {
+    padding-block: space('20') space('32');
+  }
+
+  &__background {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__inner {
+    position: relative;
+    @include container;
+    display: grid;
+    // minmax(0, …) keeps long content from widening the column on mobile.
+    grid-template-columns: minmax(0, 1fr);
+    gap: space('12');
+    align-items: center;
+
+    @include mq(lg) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: space('8');
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: space('6');
+    align-items: flex-start;
+
+    @include mq(lg) {
+      grid-column: span 7;
+    }
+  }
+
+  &__preview {
+    min-width: 0;
+
+    @include mq(lg) {
+      grid-column: span 5;
+    }
+  }
+
+  &__title {
+    @include heading('4xl');
+    color: var(--color-text);
+  }
+
+  &__title-accent {
+    display: block;
+    color: transparent;
+    background-image: $text-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  &__lead {
+    max-width: 42rem;
+    @include font-size('lg');
+    line-height: map.get($line-heights, 'relaxed');
+    color: var(--color-text-muted);
+
+    strong {
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__abbr {
+    font-family: var(--font-family-mono);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: space('4');
+    width: 100%;
+    max-width: 32rem;
+    padding-block: space('4');
+    border-block: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  }
+
+  &__metric {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__metric-value {
+    font-family: var(--font-family-mono);
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
+    font-weight: 700;
+    color: var(--color-text-secondary);
+
+    &--primary {
+      color: var(--color-primary);
+    }
+
+    &--secondary {
+      color: var(--color-secondary);
+    }
+  }
+
+  &__metric-label {
+    @include font-size('xs');
+    color: var(--color-text-muted);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('4');
+    align-items: center;
+    padding-top: space('2');
+  }
+
+  &__arrow {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+}

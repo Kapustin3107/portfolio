@@ -1,0 +1,48 @@
+@use '@/assets/styles' as *;
+
+.footer {
+  padding-block: space('8');
+  @include font-size('xs');
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+
+  &__inner {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: space('4');
+    align-items: center;
+    text-align: center;
+
+    @include mq(sm) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('6');
+    justify-content: center;
+    font-family: var(--font-family-mono);
+    @include font-size('2xs');
+  }
+
+  &__badge {
+    display: inline-flex;
+    gap: space('1');
+    align-items: center;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+
+    &--accent {
+      color: var(--color-primary);
+    }
+  }
+}

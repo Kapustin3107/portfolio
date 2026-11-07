@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "css-grid-subgrid-clamp",
+    "title": "Advanced CSS Grid: Using Subgrid and clamp() for Fluid Layouts",
+    "excerpt": "How to build perfectly adaptive card grids with aligned headings — without JavaScript hacks.",
+    "date": "2026-10-12",
+    "readingTime": 6,
+    "tags": [
+      "ModernCSS"
+    ],
+    "tone": "primary"
+  },
+  {
+    "slug": "gsap-scrolltrigger-react",
+    "title": "Optimizing Scroll Animations with GSAP ScrollTrigger in React",
+    "excerpt": "A practical look at memory leaks in hooks, using gsap.context() and reducing CPU load.",
+    "date": "2026-09-28",
+    "readingTime": 8,
+    "tags": [
+      "GSAP",
+      "Performance"
+    ],
+    "tone": "secondary"
+  },
+  {
+    "slug": "decap-cms-gitlab-pages",
+    "title": "Complete Guide: Deploying Decap CMS on GitLab Pages with Vite & React",
+    "excerpt": "Setting up a free Git-based backend for a personal site. Configuring OAuth and .gitlab-ci.yml.",
+    "date": "2026-08-15",
+    "readingTime": 5,
+    "tags": [
+      "DecapCMS",
+      "GitLab"
+    ],
+    "tone": "purple"
+  }
+]

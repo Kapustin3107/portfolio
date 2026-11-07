@@ -1,0 +1,18 @@
+@use '@/assets/styles' as *;
+
+.skip-link {
+  position: fixed;
+  top: space('3');
+  left: space('3');
+  z-index: z('progress') + 1;
+  padding: space('3') space('5');
+  font-weight: 700;
+  color: var(--color-on-primary);
+  background-color: var(--color-primary-solid);
+  border-radius: var(--radius-lg);
+  transform: translateY(-200%);
+
+  &:focus-visible {
+    transform: none;
+  }
+}

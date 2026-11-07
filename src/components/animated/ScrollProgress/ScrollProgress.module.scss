@@ -1,0 +1,12 @@
+@use '@/assets/styles' as *;
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: z('progress');
+  height: 3px;
+  pointer-events: none;
+  background-image: $brand-gradient;
+  transform: scaleX(0);
+  transform-origin: left center;
+}

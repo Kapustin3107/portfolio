@@ -1,0 +1,94 @@
+@use '@/assets/styles' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: z('header');
+  width: 100%;
+  @include glass;
+  border-width: 0 0 1px;
+  border-bottom-color: var(--color-border);
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  &__nav {
+    display: none;
+
+    @include mq(lg) {
+      display: block;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: space('4');
+    align-items: center;
+  }
+
+  &__cta {
+    display: none;
+
+    @include mq(sm) {
+      display: inline-flex;
+    }
+  }
+
+  &__menu-toggle {
+    @include flex-center;
+    padding: 0.625rem;
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface-muted);
+    border-radius: var(--radius-lg);
+    @include transition(color);
+
+    @include hover {
+      color: var(--color-text-strong);
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    @include mq(lg) {
+      display: none;
+    }
+  }
+
+  &__drawer {
+    display: flex;
+    flex-direction: column;
+    gap: space('4');
+    padding: space('6');
+    background-color: color-mix(in srgb, var(--color-bg) 95%, transparent);
+    border-top: 1px solid var(--color-border);
+    backdrop-filter: blur(24px);
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include motion-safe {
+      &--open {
+        animation: header-drawer-in var(--duration-base) var(--ease-out);
+      }
+    }
+
+    @include mq(lg) {
+      display: none;
+    }
+  }
+}
+
+@keyframes header-drawer-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}

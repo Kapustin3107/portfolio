@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "design-system",
+    "title": "Design System & UI Library",
+    "context": "BrainRocket · 2024 — Present",
+    "category": "markup",
+    "featured": true,
+    "summary": "Evolving a company-wide design system and reusable component library that streamlines the workflow between design and engineering.",
+    "description": "Evolution of the company design system: shared tokens, reusable components and markup standards used by every product team — built in close collaboration with UI/UX designers and developers.",
+    "highlights": [
+      "Architectural standards and markup best practices for the whole team",
+      "Reusable components instead of duplicated code",
+      "Code reviews and mentoring of markup developers"
+    ],
+    "image": {
+      "src": "https://images.unsplash.com/photo-1561070791-2526d30994b5",
+      "alt": "Designer desk with color swatches and interface mockups"
+    },
+    "badges": [
+      {
+        "label": "Design System",
+        "tone": "primary"
+      },
+      {
+        "label": "Component-Driven",
+        "tone": "secondary"
+      }
+    ],
+    "tags": [
+      "Sass",
+      "Figma",
+      "Design Tokens"
+    ],
+    "links": {}
+  },
+  {
+    "slug": "complex-web-apps",
+    "title": "Complex Web Application Interfaces",
+    "context": "BrainRocket · 2024 — 2026",
+    "category": "react",
+    "featured": true,
+    "summary": "Responsive, accessible and high-performance interfaces built from intricate Figma designs: semantic code, cross-browser support and rendering optimization.",
+    "description": "Translating intricate Figma mockups into clean, semantic and performant code. Integrating the design system, maintaining UI component libraries and optimizing rendering performance across all target browsers.",
+    "highlights": [
+      "Pixel-perfect implementation of Figma designs",
+      "Accessibility (a11y) and semantic markup",
+      "Cross-browser compatibility and rendering optimization"
+    ],
+    "image": {
+      "src": "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      "alt": "Analytics dashboard interface with charts"
+    },
+    "badges": [
+      {
+        "label": "Core Web Vitals",
+        "tone": "primary"
+      },
+      {
+        "label": "Cross-browser",
+        "tone": "purple"
+      }
+    ],
+    "tags": [
+      "React",
+      "TypeScript",
+      "SCSS"
+    ],
+    "links": {}
+  },
+  {
+    "slug": "portfolio-site",
+    "title": "This Portfolio Website",
+    "context": "Personal project · 2026",
+    "category": "personal",
+    "featured": true,
+    "summary": "Portfolio and tech blog: SCSS Modules with BEM, GSAP animations that respect reduced motion, WCAG 2.1 AA accessibility and static deployment to GitLab Pages.",
+    "description": "The site you are looking at. Component architecture on React and Vite, isolated SCSS modules following BEM, a centralized leak-free GSAP hook, light and dark themes, and content from a Git-based CMS.",
+    "highlights": [
+      "SCSS Modules + BEM, mobile-first",
+      "GSAP ScrollTrigger with prefers-reduced-motion support",
+      "Semantic markup and full keyboard navigation"
+    ],
+    "image": {
+      "src": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "alt": "Laptop with an open code editor"
+    },
+    "badges": [
+      {
+        "label": "GSAP",
+        "tone": "purple"
+      },
+      {
+        "label": "GitLab Pages",
+        "tone": "amber"
+      }
+    ],
+    "tags": [
+      "React",
+      "Vite",
+      "SCSS / BEM"
+    ],
+    "links": {}
+  }
+]

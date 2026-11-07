@@ -1,0 +1,51 @@
+@use '@/assets/styles' as *;
+
+.contact {
+  position: relative;
+  padding-block: space('20');
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+
+  &__inner {
+    @include container($container-narrow-width);
+  }
+
+  &__card {
+    padding: space('6');
+    @include glass;
+    border-color: color-mix(in srgb, var(--color-border) 80%, transparent);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 0 25px rgb(16 185 129 / 15%);
+
+    @include mq(sm) {
+      padding: space('10');
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('4') space('8');
+    justify-content: center;
+    margin-top: space('12');
+    font-family: var(--font-family-mono);
+    @include font-size('sm');
+  }
+
+  &__link {
+    display: inline-flex;
+    gap: space('2');
+    align-items: center;
+    color: var(--color-text-muted);
+    border-radius: var(--radius-sm);
+    @include transition(color);
+
+    @include hover {
+      color: var(--color-primary);
+    }
+  }
+
+  &__link-icon {
+    color: var(--color-primary);
+  }
+}

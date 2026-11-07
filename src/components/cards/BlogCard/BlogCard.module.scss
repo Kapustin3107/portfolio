@@ -1,0 +1,108 @@
+@use 'sass:map';
+@use '@/assets/styles' as *;
+
+$tones: "primary", "secondary", "purple", "amber";
+
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: space('3');
+  height: 100%;
+  padding: space('6');
+  @include glass;
+  border-color: color-mix(in srgb, var(--color-border) 80%, transparent);
+  border-radius: var(--radius-xl);
+  @include transition(border-color);
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--color-border-strong);
+  }
+
+  &__meta {
+    display: flex;
+    gap: space('3');
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: space('1');
+    font-family: var(--font-family-mono);
+    @include font-size('xs');
+    color: var(--color-text-muted);
+  }
+
+  &__tags {
+    @each $tone in $tones {
+      &--#{$tone} {
+        color: var(--color-#{$tone});
+      }
+    }
+  }
+
+  &__reading-time {
+    display: inline-flex;
+    flex-shrink: 0;
+    gap: space('1');
+    align-items: center;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
+  }
+
+  &__title {
+    @include font-size('xl');
+    font-weight: 700;
+    line-height: map.get($line-heights, 'snug');
+    color: var(--color-text-strong);
+  }
+
+  &__link {
+    @include transition(color);
+
+    // Expands the click area to the whole card.
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      border-radius: inherit;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::after {
+        outline: $focus-ring-width solid var(--color-focus);
+        outline-offset: $focus-ring-offset;
+      }
+    }
+  }
+
+  &:hover &__link {
+    color: var(--color-primary);
+  }
+
+  &__excerpt {
+    @include text-truncate(3);
+    @include font-size('sm');
+    line-height: map.get($line-heights, 'relaxed');
+    color: var(--color-text-muted);
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: space('4');
+    @include font-size('xs');
+    color: var(--color-text-muted);
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  }
+
+  &__more {
+    font-weight: 500;
+    color: var(--color-primary);
+  }
+}

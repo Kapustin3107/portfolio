@@ -1,0 +1,126 @@
+@use '@/assets/styles' as *;
+
+.skills {
+  position: relative;
+  padding-block: space('20');
+  background-color: color-mix(in srgb, var(--color-bg-alt) 60%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    gap: space('6');
+
+    @include mq(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mq(xl) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    &--secondary {
+      margin-top: space('6');
+
+      @include mq(lg) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: space('4');
+    height: 100%;
+    padding: space('6');
+    @include glass;
+    border-color: color-mix(in srgb, var(--color-border) 80%, transparent);
+    border-radius: var(--radius-xl);
+    @include transition(border-color);
+
+    @include hover {
+      border-color: tint(primary-solid, 40%);
+    }
+  }
+
+  &__card-title {
+    display: flex;
+    gap: space('3');
+    align-items: center;
+    @include font-size('lg');
+    font-weight: 700;
+    color: var(--color-text-strong);
+  }
+
+  &__card-icon {
+    @include flex-center;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: var(--color-primary);
+    background-color: tint(primary-solid, 10%);
+    border-radius: var(--radius-lg);
+
+    svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('2');
+  }
+
+  &__credentials {
+    display: flex;
+    flex-direction: column;
+    gap: space('4');
+  }
+
+  &__credential-title {
+    @include font-size('sm');
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  &__credential-meta {
+    @include font-size('xs');
+    color: var(--color-text-muted);
+  }
+
+  &__languages {
+    display: flex;
+    flex-direction: column;
+    gap: space('3');
+  }
+
+  &__language {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: space('3');
+    @include font-size('sm');
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &__language-name {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  &__language-level {
+    font-family: var(--font-family-mono);
+    @include font-size('xs');
+    color: var(--color-primary);
+  }
+}

@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Layout } from '@/components/common/Layout'
+import { ToastProvider } from '@/components/common/Toast'
 import { Home } from '@/pages/Home'
+import { NotFound } from '@/pages/NotFound'
 
 // Strip the trailing slash so react-router matches under GitLab Pages sub-paths.
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
@@ -7,10 +10,15 @@ const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 function App() {
   return (
     <BrowserRouter basename={basename}>
-      {/* Header / Footer / Layout will be added in the components phase. */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <ToastProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            {/* /portfolio, /blog and /blog/:slug come in the next phase. */}
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </ToastProvider>
     </BrowserRouter>
   )
 }

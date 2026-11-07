@@ -1,0 +1,19 @@
+@use '@/assets/styles' as *;
+
+.blog-list {
+  position: relative;
+  padding-block: space('20');
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    gap: space('8');
+
+    @include mq(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

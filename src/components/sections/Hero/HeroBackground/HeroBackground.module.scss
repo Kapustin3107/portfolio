@@ -1,0 +1,121 @@
+@use '@/assets/styles' as *;
+
+$grid-cell: 48px;
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  // ---- Perspective grid ------------------------------------------------------
+
+  &__grid-wrapper {
+    position: absolute;
+    inset: 0;
+    perspective: 600px;
+    // Fade the grid towards the edges so it never competes with the content.
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  }
+
+  &__grid {
+    position: absolute;
+    inset: -50% -25% 0;
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: $grid-cell $grid-cell;
+    transform: rotateX(55deg);
+    transform-origin: 50% 100%;
+    --grid-line: color-mix(in srgb, var(--color-text) 7%, transparent);
+
+    // Endless "moving towards the viewer" effect: shift by exactly one cell.
+    @include motion-safe {
+      animation: hero-bg-grid 6s linear infinite;
+    }
+  }
+
+  // ---- Parallax layers -------------------------------------------------------
+
+  &__layer {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+
+  // ---- Glow orbs -------------------------------------------------------------
+
+  &__orb {
+    position: absolute;
+    border-radius: var(--radius-full);
+    opacity: 0.5;
+
+    &--primary {
+      top: 10%;
+      left: 35%;
+      width: 31.25rem;
+      height: 31.25rem;
+      background-color: rgb(16 185 129 / 22%);
+      filter: blur(120px);
+    }
+
+    &--secondary {
+      top: 25%;
+      right: 2.5rem;
+      width: 18.75rem;
+      height: 18.75rem;
+      background-color: rgb(99 102 241 / 22%);
+      filter: blur(100px);
+    }
+
+    &--purple {
+      bottom: 0;
+      left: 5%;
+      width: 16rem;
+      height: 16rem;
+      background-color: rgb(192 132 252 / 16%);
+      filter: blur(100px);
+    }
+  }
+
+  // ---- Floating shapes -------------------------------------------------------
+
+  &__shape {
+    position: absolute;
+    width: var(--shape-size);
+    height: var(--shape-size);
+    opacity: 0.45;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    &--primary {
+      color: var(--color-primary);
+    }
+
+    &--secondary {
+      color: var(--color-secondary);
+    }
+
+    &--purple {
+      color: var(--color-purple);
+    }
+
+    &--desktop-only {
+      display: none;
+
+      @include mq(lg) {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes hero-bg-grid {
+  to {
+    transform: rotateX(55deg) translateY($grid-cell);
+  }
+}
