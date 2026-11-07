@@ -1,0 +1,207 @@
+@use 'sass:map';
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// =============================================================================
+// CSS custom properties (runtime tokens)
+// =============================================================================
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $spacing {
+    --space-#{$name}: #{$value};
+  }
+
+  --font-family-base: #{$font-family-base};
+  --font-family-mono: #{$font-family-mono};
+
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-full: #{$radius-full};
+
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  --duration-fast: #{$duration-fast};
+  --duration-base: #{$duration-base};
+  --duration-slow: #{$duration-slow};
+  --ease-out: #{$ease-out};
+  --ease-in-out: #{$ease-in-out};
+
+  --header-height: 4rem;
+
+  color-scheme: dark;
+}
+
+// =============================================================================
+// Modern reset
+// =============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--header-height);
+
+  @include motion-safe {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family-base);
+  @include font-size('base');
+  font-weight: map.get($font-weights, 'regular');
+  line-height: map.get($line-heights, 'base');
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+textarea {
+  resize: vertical;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: map.get($font-weights, 'bold');
+  line-height: map.get($line-heights, 'tight');
+  text-wrap: balance;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+
+  @include hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-family-mono);
+  font-size: 0.95em;
+}
+
+::selection {
+  color: var(--color-primary-contrast);
+  background-color: var(--color-primary);
+}
+
+#root {
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+// =============================================================================
+// Accessibility
+// =============================================================================
+
+// Keyboard-only focus indicator for every interactive element.
+:focus-visible {
+  outline: $focus-ring-width solid var(--color-focus);
+  outline-offset: $focus-ring-offset;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Global safety net for users who prefer reduced motion.
+// GSAP animations are additionally disabled via gsap.matchMedia().
+@include reduced-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Global utility (not module-scoped on purpose — used across components).
+.visually-hidden {
+  @include visually-hidden;
+}

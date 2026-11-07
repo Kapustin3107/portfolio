@@ -1,0 +1,5 @@
+// Single entry point for design tokens and mixins.
+// Use in every component module:
+//   @use '@/assets/styles' as *;
+@forward 'variables';
+@forward 'mixins';

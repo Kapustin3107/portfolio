@@ -1,0 +1,57 @@
+@use '@/assets/styles' as *;
+
+.home {
+  @include container;
+  flex: 1;
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: space('4');
+    justify-content: center;
+    min-height: 80vh;
+    min-height: 80svh;
+    padding-block: space('8');
+
+    @include mq(lg) {
+      gap: space('5');
+    }
+  }
+
+  &__eyebrow {
+    @include font-size('sm');
+    font-family: var(--font-family-mono);
+    color: var(--color-accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    @include heading('4xl');
+    max-width: 16ch;
+
+    &--accent {
+      color: var(--color-primary);
+    }
+  }
+
+  &__lead {
+    @include font-size('lg');
+    max-width: 60ch;
+    color: var(--color-text-muted);
+  }
+
+  &__section {
+    padding-block: space('9');
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__section-title {
+    @include heading('2xl');
+    margin-bottom: space('3');
+  }
+
+  &__text {
+    color: var(--color-text-muted);
+  }
+}

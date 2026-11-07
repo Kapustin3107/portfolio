@@ -1,0 +1,8 @@
+@use '@/assets/styles' as *;
+
+.scroll-reveal {
+  // Hint the browser only while motion is allowed.
+  @include motion-safe {
+    will-change: transform, opacity;
+  }
+}
