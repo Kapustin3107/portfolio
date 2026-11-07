@@ -4,8 +4,8 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  // GitLab Pages serves projects from /<project-name>/ unless a custom domain
-  // or user/group page is used. Override with VITE_BASE_PATH in CI if needed.
+  // GitHub Pages serves project sites from /<repo-name>/ — the deploy workflow
+  // sets VITE_BASE_PATH=/portfolio/. Locally the site is served from /.
   base: process.env.VITE_BASE_PATH ?? '/',
 
   plugins: [react()],

@@ -4,7 +4,7 @@ import { ToastProvider } from '@/components/common/Toast'
 import { Home } from '@/pages/Home'
 import { NotFound } from '@/pages/NotFound'
 
-// Strip the trailing slash so react-router matches under GitLab Pages sub-paths.
+// Strip the trailing slash so react-router matches under GitHub Pages sub-paths (/portfolio/).
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 function App() {

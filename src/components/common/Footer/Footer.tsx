@@ -17,7 +17,7 @@ export function Footer() {
         <ul className={b('badges')} role="list">
           <li className={b('badge', 'accent')}>
             <Zap aria-hidden="true" />
-            GitLab Pages Ready
+            GitHub Pages Ready
           </li>
           <li className={b('badge')}>WCAG 2.1 AA Compliant</li>
         </ul>

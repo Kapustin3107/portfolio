@@ -73,7 +73,7 @@
     "context": "Personal project · 2026",
     "category": "personal",
     "featured": true,
-    "summary": "Portfolio and tech blog: SCSS Modules with BEM, GSAP animations that respect reduced motion, WCAG 2.1 AA accessibility and static deployment to GitLab Pages.",
+    "summary": "Portfolio and tech blog: SCSS Modules with BEM, GSAP animations that respect reduced motion, WCAG 2.1 AA accessibility and static deployment to GitHub Pages.",
     "description": "The site you are looking at. Component architecture on React and Vite, isolated SCSS modules following BEM, a centralized leak-free GSAP hook, light and dark themes, and content from a Git-based CMS.",
     "highlights": [
       "SCSS Modules + BEM, mobile-first",
@@ -90,7 +90,7 @@
         "tone": "purple"
       },
       {
-        "label": "GitLab Pages",
+        "label": "GitHub Pages",
         "tone": "amber"
       }
     ],
@@ -99,6 +99,12 @@
       "Vite",
       "SCSS / BEM"
     ],
-    "links": {}
+    "links": {
+      "repo": {
+        "provider": "github",
+        "url": "https://github.com/Kapustin3107/portfolio"
+      },
+      "demo": "https://kapustin3107.github.io/portfolio/"
+    }
   }
 ]

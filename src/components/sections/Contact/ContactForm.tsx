@@ -16,7 +16,7 @@ const SUBJECTS = [
 
 /**
  * Accessible contact form: explicit labels, native validation, required markers.
- * TODO: connect a real endpoint (GitLab Pages is static — e.g. Formspree / Web3Forms).
+ * TODO: connect a real endpoint (GitHub Pages is static — e.g. Formspree / Web3Forms).
  */
 export function ContactForm() {
   const { showToast } = useToast()
