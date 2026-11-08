@@ -19,8 +19,8 @@ export interface ContactLink {
 
 export const site = {
   author: 'Yurii Kapustin',
-  brand: 'markup.lab',
-  role: 'Frontend Markup Lead',
+  brand: 'web.developer',
+  role: 'Frontend Developer',
   title: 'Frontend Markup Lead & Frontend Developer',
   location: 'Valencia, Spain',
   locale: 'en-US',
